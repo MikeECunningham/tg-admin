@@ -1,0 +1,37 @@
+<div id="loginMainDiv" class="bgimg">
+    <img id="headImage" src="assets/turtle-guardians.svg" />
+    <div id="centerDiv">
+        <mat-form-field class="input">
+            <mat-icon matPrefix>email</mat-icon>
+            <input [(ngModel)]="email" matInput placeholder="{{'Email Address' | translate}}" id="emailTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>lock</mat-icon>
+            <input [(ngModel)]="password" matInput type="password" placeholder="{{'Password' | translate}}" id="passwordTxt">
+        </mat-form-field>
+        <br>
+        <p id="loginMessage" style='color:crimson'>{{(login | async).loginMessage | translate}}</p>
+        <button mat-button (click)="signup()" class="button" id="signupBtn"><b>{{'SIGNUP' | translate}}</b></button>
+        <button mat-button (click)="emailLogin()" class="button" id="loginBtn"><b>{{'LOGIN' | translate}}</b></button>
+        <br><br>
+        <p (click)="forgotPassword()" id="forgotPasswordLink">{{'Forgot Password?' | translate}}</p>
+        <h2></h2>
+        <mat-form-field>
+            <mat-icon matPrefix>language</mat-icon>
+            <select [(ngModel)]="language" (change)="changeLanguage($event.target.value)" matNativeControl>
+                <option value="" hidden></option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+            </select>
+        </mat-form-field>
+        <!--
+        <button mat-button id="facebookButton" (click)="facebookLogin()" class="button"><b>{{'Continue With Facebook' | translate}}</b></button>
+        -->
+    </div>
+    <div style="height:auto;"></div>
+    <div class="footer" [ngStyle]="{'top.px': height-55}">
+        <button mat-button (click)="skipLogin()" class="button" id="skipBtn"><b>{{'Skip' | translate}}</b></button><br>
+        <span style="float: left;margin-left:5px" class="footerButtons" (click)="showTerms()">{{'Terms & Privacy' | translate}}</span>
+        <span style="float:right;margin-right:5px" class="footerButtons" (click)="showPartners()">{{'Partners' | translate}}</span>
+    </div>
+</div>

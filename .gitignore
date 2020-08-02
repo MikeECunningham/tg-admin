@@ -1,0 +1,99 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# for translations
+google-key.json
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+/www
+
+# yarn and npm
+# yarn.lock
+package-lock.json
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Mac
+.DS_Store
+
+# iOS
+platforms/ios/build/
+platforms/ios/www/
+platforms/ios/cordova/console.log
+*.xcuserdatad
+
+# android
+platforms/android/assets/www
+platforms/android/bin
+platforms/android/gen
+platforms/android/local.properties
+platforms/android/ant-build
+platforms/android/ant-gen
+platforms/android/CordovaLib/ant-build
+platforms/android/CordovaLib/ant-gen
+platforms/android/CordovaLib/bin
+platforms/android/CordovaLib/gen
+platforms/android/CordovaLib/local.properties
+
+# wp8
+platforms/wp8/bin
+platforms/wp8/obj
+platforms/wp8/www
+platforms/wp8/.staging
+platforms/wp8/*.suo
+platforms/wp8/*.csproj.user
+
+# res
+resources/signing
+Turtle Guardians-bd982172c1dd.json
+TurtleGuardians-bd982172c1dd.json
+
+# Test results and screenshots
+target
+debug.log
+
+
+# Dont push compiled output
+www/*
+platforms/*
+plugins/*

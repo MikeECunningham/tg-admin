@@ -1,0 +1,31 @@
+<div id="master">
+    <mat-toolbar color="primary" class="main header">
+        {{'You Passed!' | translate}}
+        <span class="spacer"></span>
+        <button mat-button mat-dialog-close>
+            <mat-icon class="md-48">close</mat-icon>
+        </button>
+    </mat-toolbar>
+    <p>{{'Now that you passed the test, you can become a Turtle Guardian and get your ID card by providing your mailing address here. A card should be sent in the mail with your name on it!' | translate}}
+    </p>
+
+    <mat-form-field style="margin:auto;display: block;width: 98%" appearance="outline">
+        <mat-label>{{'Email' | translate}}</mat-label>
+        <mat-icon matPrefix>email</mat-icon>
+        <input class="input" id="emailInput" matInput type="text" [(ngModel)]="email" placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field style="margin:auto;display: block;width: 98%" appearance="outline">
+        <mat-label>{{'Full Name' | translate}}</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input class="input" id="nameInput" matInput type="text" [(ngModel)]="name" placeholder="Full Name">
+    </mat-form-field>
+
+    <mat-form-field style="margin:auto;display: block;width: 98%" appearance="outline">
+        <mat-label>{{'Address' | translate}}</mat-label>
+        <mat-icon matPrefix>location_on</mat-icon>
+        <input class="input" id="addressInput" matInput type="text" [(ngModel)]="address" placeholder="{{'Address' | translate}}" autocomplete="shipping street-address">
+    </mat-form-field>
+    <button mat-raised-button (click)="sendRequest()" color="primary" id="requestButton">{{'Request Card' | translate}}</button>
+    <br>
+</div>

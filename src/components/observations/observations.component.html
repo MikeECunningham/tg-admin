@@ -1,0 +1,31 @@
+<mat-toolbar id='observationsToolbar' color='primary'>
+    <span style='margin:auto;font-weight: 500;font-size: 24px'>{{'My Observations' | translate}}</span>
+</mat-toolbar>
+<div id="paddingDiv">
+    <div id="innerDiv" (swipedown)="reloadObservations()">
+        <div *ngIf="!(login | async).loggedIn">
+            <mat-card style="margin: 2.5%;">
+                <p style="font-size: 16px;line-height: 34px;color: gray;">{{'Log in to see to status of your turtles!' | translate}}</p>
+                <button mat-raised-button id="loginButton" (click)="loginPage()" class="button"><b>{{'LOG IN' | translate}}</b></button>
+            </mat-card>
+        </div>
+        <div *ngIf="(login | async).loggedIn">
+            <div *ngIf="!(observations | async).observations || (observations | async).observations.length==0">
+                <mat-card style="margin: 2.5%;">
+                    <p style="font-size: 16px;line-height: 34px;color: gray;">{{'You haven\'t submitted any turtles yet, but
+                        thats ok! Just use this page to report turtles if you see any' | translate}}</p>
+                </mat-card>
+            </div>
+            <mat-card style="margin: 2.5%;" *ngFor="let observation of (observations | async).observations">
+                <mat-card-header>
+                    <mat-card-title>{{nameMap[observation.species]}}</mat-card-title>
+                    <mat-card-subtitle>Found while {{behaviorMap[observation.behavior]}}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <button class="fab-button" (click)="addObservation()" id="addObservationButton" mat-fab
+            color="primary">
+            <mat-icon class="md-24">add</mat-icon>
+        </button>
+    </div>
+</div>

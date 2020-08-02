@@ -1,0 +1,22 @@
+<div id="carouselDiv">
+    <div id="carouselContentDiv">
+      <div id="imageContainer" [ngStyle]="{'transform': 'translateX(-' + ((100/images.length)*currentImage) + '%)', 'width.%':100*images.length}">
+        <img [ngStyle]="{'width.%':100/images.length}" *ngFor="let url of images; let i = index" (swipeleft)="goRight()" (swiperight)="goLeft()" [ngClass] class="image fade"
+          src="{{url}}" />
+      </div>
+    </div>
+    <span class="left" (click)="goLeft();"></span>
+    <span class="right" (click)="goRight();"></span>
+    <a class='leftChev' (click)="goLeft();">
+      <mat-icon class="md-36">chevron_left</mat-icon>
+    </a>
+    <a class='rightChev' (click)="goRight();">
+      <mat-icon class="md-36">chevron_right</mat-icon>
+    </a>
+    <div id="dotDiv">
+      <span *ngFor="let image of images; let i=index">
+        <span [ngClass]="i===currentImage?'activeDot':'dot'"></span>
+      </span>
+    </div>
+  </div>
+  

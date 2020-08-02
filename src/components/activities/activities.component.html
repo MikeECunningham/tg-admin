@@ -1,0 +1,16 @@
+<div class="trailbgimg">
+  <mat-toolbar id='activitiesToolbar' color='primary'>
+    <span style='margin:auto;font-weight: 500;font-size: 24px;
+      '>{{'Activities' | translate}}</span>
+  </mat-toolbar>
+  <div style="padding-top:56px">
+    <mat-card style="margin:10px">
+      <mat-card-title>{{'Turtle Identification Test' | translate}}</mat-card-title>
+      <mat-card-subtitle>{{'See how well you can ID turtles!' | translate}}</mat-card-subtitle>
+      <img src="assets/images/turtle-collage.png">
+      <mat-card-actions>
+        <button mat-raised-button id="turtleTestButton" (click)="takeTest()" color="primary" class="testButton" >{{'Take the test!' | translate}}</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

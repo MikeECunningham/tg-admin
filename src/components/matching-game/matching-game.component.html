@@ -1,0 +1,45 @@
+<div style="height:100vh;width:100%;overflow: hidden;font-family: Arial, Helvetica, sans-serif">
+    <mat-toolbar id='infoToolbar' color='primary'>
+        <button id="backButton" (click)="goBack();" mat-button>
+            <mat-icon class="md-48">chevron_left</mat-icon>
+        </button>
+        <p>{{'Turtle ID Test' | translate}}</p>
+    </mat-toolbar>
+    <div id="paddingDiv">
+        <div class="parent" [@slide]="activePane">
+
+            <mat-card *ngFor="let current of testList; let i = index" style="margin:10px;width:calc(100vw - 52px)">
+                <!-- TODO Make this translate properly -->
+                <div *ngVar="{ questionNumber: i+1 }; let translateParam">
+                    <mat-card-title>
+                        {{ questionString(translateParam) }}</mat-card-title>
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{'Species'| translate}}</mat-label>
+                        <mat-icon matPrefix svgIcon="turtle"></mat-icon>
+                        <select [(ngModel)]='answerList[i]' id="answerList{{i}}" matNativeControl placeholder="{{'Species Guess' | translate}}">
+                            <option value="blandings">{{'Blanding\'s Turtle' | translate}}</option>
+                            <option value="easternMusk">{{'Eastern Musk Turtle' | translate}}</option>
+                            <option value="midlandPainted">{{'Midland Painted Turtle' | translate}}</option>
+                            <option value="westernPainted">{{'Western Painted Turtle' | translate}}</option>
+                            <option value="northernMap">{{'Northern Map Turtle' | translate}}</option>
+                            <option value="red-earedSlider">{{'Red-eared Slider Turtle' | translate}}</option>
+                            <option value="snapping">{{'Snapping Turtle' | translate}}</option>
+                            <option value="spinySoftshell">{{'Spiny Softshell Turtle' | translate}}</option>
+                            <option value="spotted">{{'Spotted Turtle' | translate}}</option>
+                            <option value="wood">{{'Wood Turtle' | translate}}</option>
+                        </select>
+                    </mat-form-field>
+                    <img class="testImages" id="testImage{{i}}"
+                        [src]="'assets/images/'+current.name+'/'+current.name+current.index+'.jpg'">
+                    <p style="font-size: 12px;">Photo courtesy of: {{current.credit}}</p>
+                    <br>
+                    <button mat-raised-button id="nextButton{{i}}" (click)="nextPage()" *ngIf="i<19" color="primary"
+                        [disabled]="!answerList[i]" class="button">{{'Next' | translate}}</button>
+                    <button mat-raised-button id="submitButton" (click)="submit()" *ngIf="i==19" color="primary" [disabled]="!answerList[i]"
+                        class="button">{{'Finish Test' | translate}}</button>
+                </div>
+            </mat-card>
+        </div>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<mat-toolbar id="signupToolbar" color="primary" class="main header">
+    <button id="menuButton" (click)="goBack();" mat-button>
+        <mat-icon class="md-48">chevron_left</mat-icon>
+    </button>
+    <h1>{{'Sign Up' | translate}}</h1>
+</mat-toolbar>
+<div id="paddingDiv">
+    <div *ngIf="(signUp | async).signingUp" id="overlay">
+        <mat-progress-spinner style="margin:auto;margin-top:50vh;" color="white" mode="indeterminate" diameter=50>
+        </mat-progress-spinner>
+    </div>
+    <div id="centerDiv">
+        <mat-form-field class="input">
+            <mat-icon matPrefix>email</mat-icon>
+            <input [(ngModel)]="email" matInput placeholder="{{'Email Address' | translate}}" id="emailTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>person</mat-icon>
+            <input [(ngModel)]="firstName" matInput placeholder="{{'First Name' | translate}}" id="firstNameTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>person</mat-icon>
+            <input [(ngModel)]="lastName" matInput placeholder="{{'Last Name' | translate}}" id="lastNameTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>lock</mat-icon>
+            <input [(ngModel)]="password" matInput type="password" placeholder="{{'Password' | translate}}"
+                id="passwordTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>lock</mat-icon>
+            <input [(ngModel)]="confirmPassword" matInput type="password"
+                placeholder="{{'Confirm Password' | translate}}" id="confirmPasswordTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>location_city</mat-icon>
+            <input [(ngModel)]="postalCode" matInput
+                placeholder="{{'Canadian Postal Code' | translate}}" id="postalCodeTxt">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <mat-icon matPrefix>question_answer</mat-icon>
+            <select [(ngModel)]="reference" matNativeControl placeholder="{{'How did you find this app?' | translate}}"
+                id="referenceSel">
+                <option value="" hidden></option>
+                <option value="Turtle Guardians Website">{{'Turtle Guardians Website' | translate}}</option>
+                <option value="App Store">{{'App Store' | translate}}</option>
+                <option value="Workshop">{{'Workshop' | translate}}</option>
+                <option value="Outreach Event">{{'Outreach Event' | translate}}</option>
+                <option value="Word of mouth">{{'Word of mouth' | translate}}</option>
+                <option value="Other">{{'Other' | translate}}</option>
+            </select>
+        </mat-form-field>
+        <div *ngIf="reference==='Other'">
+            <mat-form-field class="input">
+                <mat-icon matPrefix>question_answer</mat-icon>
+                <input [(ngModel)]="otherReference" matInput placeholder="{{'How did you find this app?' | translate}}">
+            </mat-form-field>
+        </div>
+
+        <p style="text-align: left">{{'I consent to receive emails about conservation news.' | translate}}
+            <mat-slide-toggle id="emailSlideToggle" [(ngModel)]="acceptEmails"></mat-slide-toggle>
+        </p>
+
+        <p>{{'By signing up, I agree I am at least 13 years of age or have parental consent and agree to the Terms and Conditions, as well as the Privacy Policy defined by the Turtle
+            Guardians App' | translate}}</p>
+        <p style='color:crimson'>{{(signUp | async).signUpMessage | translate}}</p>
+        <p style='color:crimson'>{{localError}}</p>
+        <button id="signupButton" class="button" (click)="signup()" mat-raised-button >{{'SIGN UP' | translate}}</button>
+    </div>
+</div>

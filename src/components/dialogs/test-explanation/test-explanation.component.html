@@ -1,0 +1,13 @@
+<div id="master">
+    <mat-toolbar color="primary" class="main header">
+        {{'Good Luck!' | translate}}
+        <span class="spacer"></span>
+        <button mat-button id="closeButton" mat-dialog-close>
+            <mat-icon class="md-48">close</mat-icon>
+        </button>
+    </mat-toolbar>
+    <p id="explanationText">{{'There are 20 turtle pictures in this test and you need to get a score of 75% (at least 15/20). Match the turtle species with the picture shown and if you pass we will send you a Turtle Guardians Card!' | translate}}
+    </p>
+    <button mat-raised-button (click)="startTest()" color="primary" id="requestButton">{{'Start the test!' | translate}}</button>
+    <br>
+</div>

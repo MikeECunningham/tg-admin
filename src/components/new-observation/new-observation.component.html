@@ -1,0 +1,196 @@
+<div style="height:100vh;width:100%;overflow: hidden;font-family: Arial, Helvetica, sans-serif">
+    <mat-toolbar id='infoToolbar' color='primary'>
+        <button id="backButton" (click)="goBack();" mat-button>
+            <mat-icon class="md-48">chevron_left</mat-icon>
+        </button>
+        <p>{{'New Observation' | translate}}</p>
+    </mat-toolbar>
+    <div id="paddingDiv" style="height:calc(100vh - 56px);overflow: scroll;">
+        <mat-card style="margin:10px">
+            <div *ngIf="(newObservation | async).page=='species'">
+                <mat-card-title>{{'Select The Species' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{'Select which species you believe that the turtle is' | translate}}
+                </mat-card-subtitle>
+                <mat-form-field style="margin:auto;display: block;width: 98%" appearance="outline">
+                    <mat-label>Species</mat-label>
+                    <mat-icon matPrefix svgIcon="turtle"></mat-icon>
+                    <select [(ngModel)]="species" id="speciesSelectorDropdown" matNativeControl placeholder="Species">
+                        <option value="" disabled></option>
+                        <option value="BNTU">{{'Blanding\'s Turtle' | translate}}</option>
+                        <option value="STIN">{{'Eastern Musk Turtle' | translate}}</option>
+                        <option value="MPTU">{{'Midland Painted Turtle' | translate}}</option>
+                        <option value="MATU">{{'Northern Map Turtle' | translate}}</option>
+                        <option value="RSTU">{{'Red-eared Slider Turtle' | translate}}</option>
+                        <option value="SNTU">{{'Snapping Turtle' | translate}}</option>
+                        <option value="SSTU">{{'Spiny Softshell Turtle' | translate}}</option>
+                        <option value="SPTU">{{'Spotted Turtle' | translate}}</option>
+                        <option value="WPTU">{{'Western Painted Turtle' | translate}}</option>
+                        <option value="WOTU">{{'Wood Turtle' | translate}}</option>
+                        <option value="UNKN">{{'Other' | translate}}</option>
+                    </select>
+                </mat-form-field>
+                <div *ngIf="species=='' || species=='UNKN'" class="imageContainer">
+                    <h1 class="centered">?</h1>
+                </div>
+                <img *ngIf="species=='BNTU'" src="assets/images/blandings/blandings1.jpg" class="img" />
+                <p *ngIf="species=='BNTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='STIN'" src="assets/images/easternMusk/easternMusk1.jpg" class="img" />
+                <p *ngIf="species=='STIN'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='MPTU'" src="assets/images/midlandPainted/midlandPainted1.jpg" class="img" />
+                <p *ngIf="species=='MPTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='MATU'" src="assets/images/northernMap/northernMap1.jpg" class="img" />
+                <p *ngIf="species=='MATU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='RSTU'" src="assets/images/red-earedSlider/red-earedSlider1.jpg" class="img" />
+                <p *ngIf="species=='RSTU'" style="font-size: 12px;">Photo courtesy of: Scott Gillingwater</p>
+                <img *ngIf="species=='SNTU'" src="assets/images/snapping/snapping1.jpg" class="img" />
+                <p *ngIf="species=='SNTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='SSTU'" src="assets/images/spinySoftshell/spinySoftshell1.jpg" class="img" />
+                <p *ngIf="species=='SSTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='SPTU'" src="assets/images/spotted/spotted1.jpg" class="img" />
+                <p *ngIf="species=='SPTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='WPTU'" src="assets/images/westernPainted/westernPainted1.jpg" class="img" />
+                <p *ngIf="species=='WPTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <img *ngIf="species=='WOTU'" src="assets/images/wood/wood1.jpg" class="img" />
+                <p *ngIf="species=='WOTU'" style="font-size: 12px;">Photo courtesy of: Joe Crowley</p>
+                <br>
+                <button mat-raised-button color="primary" (click)="nextPage()"
+                        class="button">{{'Next' | translate}}</button>
+
+            </div>
+            <div *ngIf="(newObservation | async).page=='image1'">
+
+                <mat-card-title>{{'Take a picture of the turtle' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{'Make sure you can see the top of the turtle in the picture' | translate}}
+                </mat-card-subtitle>
+                <img *ngIf="carapaceImageUrl" [src]="carapaceImageUrl" class="img" />
+                <div *ngIf="!carapaceImageUrl" class="imageContainer">
+                    <span (click)="requestCarapaceImage()">
+                        <mat-icon class="md-48" id="camIcon">camera_alt</mat-icon>
+                    </span>
+                </div>
+                <br>
+                <button mat-raised-button color="primary" (click)="nextPage()"
+                    class="button">{{'Next' | translate}}</button>
+
+            </div>
+
+            <div *ngIf="(newObservation | async).page=='image2'">
+                <mat-card-title>{{'Take a picture of the turtle\'s plastron (Optional)' | translate}}</mat-card-title>
+                <mat-card-subtitle>
+                    {{'If you are able to, take a picture of the turtles plastron(underneath the turtle).' | translate}}
+                </mat-card-subtitle>
+                <div *ngIf="!plastronImageUrl" class="imageContainer">
+                    <span (click)="requestPlastronImage()">
+                        <mat-icon class="md-48" id="camIcon">camera_alt</mat-icon>
+                    </span>
+                </div>
+                <img *ngIf="plastronImageUrl" [src]="plastronImageUrl" class="img" />
+                <br>
+                <button mat-raised-button color="primary" (click)="nextPage()"
+                    class="button">{{'Next' | translate}}</button>
+            </div>
+            <div *ngIf="(newObservation | async).page=='behavior'">
+                <mat-card-title>{{'What was the turtle doing?' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{'When the turtle was found, what did it look like it was doing?' | translate}}
+                </mat-card-subtitle>
+                <mat-form-field style="width: 98%;margin: auto;max-width: 98%;display: block;" appearance="outline">
+                    <mat-label>{{'Behavior' | translate}}</mat-label>
+                    <select id="behaviorDropdown" [(ngModel)]="behavior" matNativeControl
+                        placeholder="{{'Behavior' | translate}}">
+                        <option value="BASK">{{'Basking' | translate}}</option>
+                        <option value="SWIM">{{'Swimming' | translate}}</option>
+                        <option value="CROS">{{'Crossing Road' | translate}}</option>
+                        <option value="INJU">{{'Injured' | translate}}</option>
+                        <option value="NEST">{{'Nesting' | translate}}</option>
+                        <option value="DEAD">{{'Dead' | translate}}</option>
+                    </select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="nextPage()"
+                    class="button">{{'Next' | translate}}</button>
+
+            </div>
+            <div *ngIf="(newObservation | async).page=='habitat'">
+                <mat-card-title>{{'Where was the turtle?' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{'What habitat was the turtle found in?' | translate}}</mat-card-subtitle>
+                <mat-form-field style="width: 98%;margin: auto;max-width: 98%;display: block;" appearance="outline">
+                    <mat-label>{{'Habitat' | translate}}</mat-label>
+                    <mat-icon matPrefix>location_on</mat-icon>
+                    <select id="habitatDropdown" [(ngModel)]="habitat" matNativeControl placeholder="Habitat">
+                        <option value="RIVER">{{'River' | translate}}</option>
+                        <option value="LAKE">{{'Lake' | translate}}</option>
+                        <option value="WETLAND">{{'Wetland' | translate}}</option>
+                        <option value="ROCKBAREN">{{'Rock Baren' | translate}}</option>
+                        <option value="OPEN">{{'Open area' | translate}}</option>
+                        <option value="FOREST">{{'Forest' | translate}}</option>
+                        <option value="ROAD">{{'Road' | translate}}</option>
+                        <option value="ROADSHOULDER">{{'Shoulder Of Road' | translate}}</option>
+                    </select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="nextPage()"
+                    class="button">{{'Next' | translate}}</button>
+
+            </div>
+            <div *ngIf="(newObservation | async).page=='submit'">
+                <mat-card-title>{{ 'Confirm Your Observation' | translate }}</mat-card-title>
+                <mat-list>
+                    <mat-list-item><b>{{'Species:' | translate}}</b> {{speciesList[species] | translate}}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><b>{{'Behavior:' | translate}}</b> {{behaviorList[behavior] | translate}}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><b>{{'Habitat:' | translate}}</b> {{habitatList[habitat] | translate}}
+                    </mat-list-item>
+                </mat-list>
+                <br>
+                <div style="display: flex;">
+                    <img *ngIf="carapaceImageUrl" [src]="carapaceImageUrl" class="halfImg" />
+                    <img *ngIf="plastronImageUrl" [src]="plastronImageUrl" class="halfImg" />
+                </div>
+                
+                <div *ngIf="!species || !behavior || !habitat || !carapaceImageUrl">
+                    <p style="color:crimson">{{'Please correct the following errors before submitting :' | translate}}
+                    </p>
+                    <ul style="color:crimson">
+                        <li *ngIf="!carapaceImageUrl">{{'You are missing an image of the turtle' | translate}}</li>
+                        <li *ngIf="!species">
+                            {{'You haven\'t chosen what species you believe the turtle is' | translate}}</li>
+                        <li *ngIf="!behavior">{{'You haven\'t chosen the behavior of the turtle' | translate}}</li>
+                        <li *ngIf="!habitat">{{'You haven\'t chosen a habitat for the turtle' | translate}}</li>
+                    </ul>
+                </div>
+                <hr>
+                <div>
+                    <p>{{'Have you already submitted this observation to another project?' | translate}}</p>
+                    <mat-form-field>
+                        <mat-icon matPrefix>question_answer</mat-icon>
+                        <select [(ngModel)]="previousSubmissions" matNativeControl id="previousSubmissionsSel">
+                            <option value="">No / Don't Know</option>
+                            <option value="Saving Turtles at Risk Today (START) Project,">{{'Saving Turtles at Risk Today (START) Project,' | translate}}</option>
+                            <option value="Adopt a Pond">{{'Adopt a Pond' | translate}}</option>
+                            <option value="iNaturalist">{{'iNaturalist' | translate}}</option>
+                            <option value="Other">{{'Other' | translate}}</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="previousSubmissions==='Other'">
+                    <mat-form-field>
+                        <mat-icon matPrefix>question_answer</mat-icon>
+                        <input [(ngModel)]="otherSubmissions" matInput
+                            placeholder="{{'Which project(s) have you submitted to?' | translate}}">
+                    </mat-form-field>
+                </div>
+
+                <br><br>
+                <button mat-raised-button color="primary" (click)="submit()" [disabled]="!species || !behavior || !habitat || !carapaceImageUrl"
+                        class="button">{{'Submit' | translate}}</button>
+                <p style="color:crimson">{{(newObservation | async).submitMessage}}</p>
+            </div>
+        </mat-card>
+    </div>
+    <div *ngIf="(newObservation | async).submittingObservation" id="overlay">
+        <mat-progress-spinner style="margin:auto;margin-top:50vh;" color="white" mode="indeterminate" diameter=50>
+        </mat-progress-spinner>
+    </div>
+
+</div>

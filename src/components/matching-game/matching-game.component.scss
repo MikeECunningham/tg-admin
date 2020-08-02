@@ -1,0 +1,119 @@
+#backButton {
+    display: block;
+    padding:0;
+}
+mat-toolbar{
+    padding:0;
+}
+mat-card{
+    height: 100%;
+}
+#paddingDiv{
+	position: relative;
+    padding-top: 56px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+#infoToolbar{
+    position: absolute;
+	z-index: 2;
+}
+#centerDiv{
+    border: 1px solid #F1F1F1;
+    margin: auto;
+    background-color: #FAFAFA;
+    margin-top: 10px;
+    padding-bottom:10px;
+}
+.main.contents {
+	min-height: 100vh;
+	width: 100%;
+	/* height of header */
+	background-color: #e4e1d5;
+}
+.imageContainer{
+    padding-top: 100%;
+    background-color: #EAEAEA;
+    border: 1px solid rgba(0,0,0,0.2);
+    position: relative;
+    margin:10px;
+}
+.imageCam{
+    top:50%;
+    left:50%;
+    width:20%;
+    height: 20%;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+#camIcon{
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+#submitButton{
+    width:100%;
+    background-color:rgb(104, 52, 0);
+    color:white;
+}
+#overlay{
+    background-color: rgba(20,20,20,0.75);
+    position: absolute;
+    top:0;
+    bottom:0;
+    width:100vw;
+    height:100vh;
+    text-align: center;
+    vertical-align: middle;
+    line-height:100vh;
+    z-index: 20;
+}
+.next{
+    margin: auto;
+    display: block;
+}
+.centered{
+    font-size:50px;
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.testImages{
+    width: 98%;
+    margin: auto;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+mat-card-title{
+    text-align: center
+}
+mat-card-actions{
+    margin-bottom: 0;
+}
+.button{
+    width:98%;
+    background-color: rgb(104, 52, 0);
+    color:white;
+    margin:auto;
+    display:block;
+}
+:host {
+    display: block;
+    overflow: hidden; /* Hide everything that doesn't fit compoennt */
+  }
+  .parent {
+    height: 100%;
+    width: 2000%;      /* Make the parent element to take up twice
+                         of the component's width */
+    display: flex;    /* Align all children in a row */
+    div { flex: 1; }  /* Evenly divide width between children */
+  }

@@ -1,0 +1,36 @@
+<div id="mainDiv">
+  
+  
+      <div class="main contents">
+        <mat-tab-group headerPosition="below" [selectedIndex]="pagePosition">
+            <mat-tab label="Field Guide">
+              <ng-template mat-tab-label>
+                <!--Field Guide-->
+                <mat-icon>school</mat-icon>
+              </ng-template>
+              <div class="tab-contents"><app-guide></app-guide></div>
+            </mat-tab>
+            <mat-tab label="Observations">
+                <ng-template mat-tab-label>
+                    <!--Observations-->
+                    <mat-icon>list</mat-icon>
+                  </ng-template>
+                <div class="tab-contents"><app-observations></app-observations></div>
+            </mat-tab>
+            <mat-tab label="Activities">
+                <ng-template mat-tab-label>
+                    <!--Observations-->
+                    <mat-icon>local_play</mat-icon>
+                  </ng-template>
+                <div class="tab-contents"><app-activities></app-activities></div>
+            </mat-tab>
+            <mat-tab label="Profile">
+                <ng-template mat-tab-label>
+                    <!--Profile-->
+                    <mat-icon>person</mat-icon>
+                  </ng-template>
+                <div class="tab-contents"><app-profile></app-profile></div>
+              </mat-tab>
+          </mat-tab-group>
+      </div>
+  </div>

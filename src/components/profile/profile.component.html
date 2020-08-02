@@ -1,0 +1,114 @@
+<mat-toolbar id='profileToolbar' color='primary'>
+    <div style="position: relative;text-align: center;width:100%">
+        <span>
+            <button (click)="editMode()" *ngIf="(login | async).loggedIn" mat-button id="editProfileButton">
+                <mat-icon *ngIf="mode" class="md-36">save</mat-icon>
+                <mat-icon *ngIf="!mode" class="md-36">edit</mat-icon>
+            </button>
+        </span>
+        <span *ngIf="!mode" style='margin:auto;font-weight: 500;font-size: 24px'>{{'Profile' | translate}}</span>
+        <span *ngIf="(login | async).loggedIn && mode"
+            style='margin:auto;font-weight: 500;font-size: 24px'>{{'Edit Profile' | translate}}</span>
+        <span>
+            <button (click)="logout()" *ngIf="(login | async).loggedIn && !mode" mat-button id="logoutButton">
+                <mat-icon class="md-36">exit_to_app</mat-icon>
+            </button>
+            <button *ngIf="(login | async).loggedIn && mode" (click)="cancelEditMode()" mat-button id="cancelButton">
+                <mat-icon class="md-36">cancel</mat-icon>
+            </button>
+        </span>
+    </div>
+</mat-toolbar>
+<div class="paddingDiv">
+    <div *ngIf="(login | async).loggedIn">
+        <mat-card style="margin: 2.5%">
+            <p style='color:crimson'>{{localError}}</p>
+            <div style="position: relative;">
+                <img src="./assets/images/avatars/turtles/blandings.png" class="roundImage" alt="Avatar">
+
+                <h2 *ngIf="!mode" style="text-align: center" id="profileName">
+                    {{(profile | async).firstName + ' ' + (profile | async).lastName}}</h2>
+                <span *ngIf="mode" id="profileEditNameField">
+                    <h2>
+                        <mat-form-field class="input">
+                            <input [(ngModel)]="firstName" id="firstNameEditText" matInput (change)="editChangeMade()"
+                                placeholder="{{'First Name' | translate}}">
+                        </mat-form-field>
+                        <mat-form-field class="input">
+                            <input [(ngModel)]="lastName" id="lastNameEditText" matInput (change)="editChangeMade()"
+                                placeholder="{{'Last Name' | translate}}">
+                        </mat-form-field>
+                        <mat-form-field class="input">
+                            <input [(ngModel)]="postalCode" id="postalCodeEditText" matInput (change)="editChangeMade()"
+                                placeholder="{{'Postal Code' | translate}}">
+                        </mat-form-field>
+                    </h2>
+                </span>
+                <hr *ngIf="!mode">
+                <h4 *ngIf="!mode" style="text-align: left" id="profileEmail">
+                    {{'Email: '| translate }}{{(profile | async).email}}
+                </h4>
+                <h4 *ngIf="!mode" style="text-align: left" id="profilePostalCode">
+                    {{'Postal Code: '| translate }}{{(profile | async).postalCode}}
+                </h4>
+                <div *ngIf="!mode" id="testProfileContent">
+                    <div *ngIf="(profile | async).passedTest">
+                        <h4>
+                            <button mat-raised-button (click)="sendCard()" color="primary" id="sendCardButton"
+                                class="button">{{'Send Card' | translate}}</button>
+                        </h4>
+                    </div>
+                    <div *ngIf="!(profile | async).passedTest">
+                        <h4>
+                            {{'You have not passed the Turtle Quiz yet' | translate }}
+                            {{ 'Pass the quiz and then check back here to request a special card delivery!' | translate}}
+                            <button id="testButton" mat-raised-button (click)="takeTest()" color="primary"
+                                class="button">{{'Take Test' | translate}}</button>
+                        </h4>
+                    </div>
+                </div>
+                <div *ngIf="(login | async).loggedIn">
+                    <button *ngIf="!mode" id="changePasswordButton" mat-raised-button (click)="changePassword()"
+                        color="primary" class="button">{{'Change Password' | translate}}</button>
+                </div>
+                <h4>
+                    <mat-checkbox *ngIf="!mode" id="emailsDisplayButton" [checked]="(profile | async).acceptEmails"
+                        disabled>{{'Accepting Newsletter Emails' | translate}}</mat-checkbox>
+                    <mat-checkbox *ngIf="mode" id="emailsCheckButton" (change)="editChangeMade()"
+                        [(ngModel)]="acceptEmails" [checked]="(profile | async).acceptEmails">
+                        {{'Accepting Newsletter Emails' | translate}}
+                    </mat-checkbox>
+                </h4>
+            </div>
+        </mat-card>
+    </div>
+
+    <div *ngIf="!(login | async).loggedIn">
+        <mat-card style="margin: 2.5%">
+            <h1 style="text-align: center;">{{'You are not currently logged in.' | translate}}</h1>
+            <button mat-raised-button id="signupButton" (click)="signUpPage()"
+                class="button"><b>{{'SIGN UP' | translate}}</b></button><br>
+            <button mat-raised-button id="loginButton" (click)="loginPage()"
+                class="button"><b>{{'LOG IN' | translate}}</b></button>
+        </mat-card>
+    </div>
+
+    <div class="languageBlock">
+        <mat-card style="margin: 2.5%">
+            <mat-form-field>
+                <mat-icon matPrefix>language</mat-icon>
+                <mat-label>{{'Language' | translate}}</mat-label>
+                <select [(ngModel)]="language" (change)="changeLanguage($event.target.value)" matNativeControl>
+                    <option value="" hidden></option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </mat-form-field>
+        </mat-card>
+    </div>
+
+    <button mat-button (click)="deleteDialogue()" *ngIf="(login | async).loggedIn" color="primary" id="deleteButton"
+        class="button">{{'Delete Account' | translate}}</button>
+    <p style="text-align: center;font-size: 12px;">Illustrations courtesy of
+        <img src="../../assets/images/avatars/torontozoo.svg" style="width: 12%; height: 6%;"></p>
+</div>

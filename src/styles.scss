@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #d3cfab;
+  font-family: sans-serif;
+  
+}
+
+.mat-app-background {
+  background-color: #d3cfab !important;
+}
+
+.mat-form-field-flex {
+  background-color: #ffffff;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.mat-tab-labels {
+  justify-content: center !important; /* align items in Main Axis */
+  background-color: rgb(104, 52, 0);
+}
+
+.mat-tab-label {
+  width: 33.3333333%;
+  color: white;
+  font-weight: 600;
+  opacity: 1;
+}
+.doubleTabbed .mat-tab-label {
+  width: 50%;
+  color: white;
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* ink bar style */
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: rgb(68, 34, 0);
+  height: 3px;
+
+}
+
+.mat-tab-label-content {
+  opacity: 1;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #7ec59f;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: rgb(104, 52, 0);
+}
+
+.mat-checkbox.mat-checked .md-icon {
+    background-color: rgb(104, 52, 0);
+}
+
+.mat-toolbar.mat-primary {
+  background: rgb(104, 52, 0);
+  box-shadow: 0px 2px 4px #888888;
+}
+
+/* Start icon alignment fix here */
+.mat-form-field-prefix mat-icon {
+  bottom: -4px;
+  position: absolute;
+  left: 3px;
+}
+
+.mat-form-field-infix {
+  padding-left: 30px !important;
+}
+
+.mat-form-field-label-wrapper {
+  left: 30px !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: rgb(104, 52, 0);
+}
+
+/* End icon alignment fix here */
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+.material-icons.md-36 {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}

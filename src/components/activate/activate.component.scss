@@ -1,0 +1,57 @@
+#activationPageDiv{
+    text-align: center;
+    color: #666666;
+}
+mat-toolbar{
+    padding:0;
+}
+#backButton {
+    display: block;
+    padding:0;
+}
+#headImage{
+    max-width: 80%;
+    width: 100%;
+    padding: 15px;
+}
+#centerDiv{
+    width:80%;
+    max-width:80%;
+    margin:auto;
+}
+//#00853f
+#sendButton{
+    width:98%;
+    background-color:rgb(104, 52, 0);
+    color:white;
+    float:left;
+} 
+
+#loginButton{
+    width:98%;
+    background-color:#2e2f30;
+    color:white;
+    float:left;
+} 
+ 
+ h2 span { 
+     background:#DBDCD3; 
+     padding:0 10px; 
+ }
+
+ .footer{ 
+    position: fixed;        
+    bottom: 0px; 
+    width: 100%;
+}
+#overlay{
+    background-color: rgba(20,20,20,0.75);
+    position: absolute;
+    top:0;
+    bottom:0;
+    width:100vw;
+    height:100vh;
+    text-align: center;
+    vertical-align: middle;
+    line-height:100vh;
+}

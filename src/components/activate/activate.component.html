@@ -1,0 +1,16 @@
+<div id="activationPageDiv">
+        <mat-toolbar color="primary" class="main header">
+                <button id="backButton" (click)="goBack();" mat-button><mat-icon class="md-48">chevron_left</mat-icon></button>
+                <h1>{{'Account activation required' | translate}}</h1>
+        </mat-toolbar>
+    <div id="centerDiv">
+
+        <img id="headImage" src="assets/turtle-guardians.svg" />
+        <h2>{{'Just one more step!' | translate}}</h2>
+        <p>{{'Check your email inbox for an email with the link to activate your account before you proceed. Once you have been activated, log in on the main screen.' | translate}}</p>
+        
+        <button mat-button id="sendButton" (click)="resend()" class="button"><b>{{'RESEND EMAIL' | translate}}</b></button>
+        <br><br><br>
+        <button mat-button id="loginButton" (click)="goBack()" class="button"><b>{{'LOGIN' | translate}}</b></button>
+    </div>
+</div>

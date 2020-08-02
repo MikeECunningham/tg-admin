@@ -1,0 +1,13 @@
+<div>
+    <mat-toolbar id='infoToolbar' color='primary'>
+        <button id="menuButton" (click)="goBack();" mat-button>
+            <mat-icon class="md-48">chevron_left</mat-icon>
+          </button>
+        <span style='margin:auto;font-weight: 500;font-size: 24px; padding-right: 48px'>{{'Partners' | translate}}</span>
+    </mat-toolbar>
+    <div class="paddingDiv">
+        <mat-card *ngFor="let partner of partners">
+            <img class='image' [src]="partner">
+        </mat-card>
+    </div>
+</div>

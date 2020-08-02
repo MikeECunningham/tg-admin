@@ -1,0 +1,20 @@
+<div *ngIf="(guide | async).currentPage==='main'"> 
+  <mat-toolbar id='guideToolbar' color='primary'>
+    <span style='margin:auto;font-weight: 500;font-size: 24px;'>{{'Turtle Guide' | translate}}</span>
+  </mat-toolbar>
+  <div class="paddingDiv">
+
+    <mat-card *ngFor="let page of pages" (click)="openPage(page.speciesCode)">
+      <mat-card-header>
+        <mat-card-title>{{page.speciesName | translate}}</mat-card-title>
+        <mat-card-subtitle>{{page.latinName}}</mat-card-subtitle>
+        <img class='image' [src]="page.thumbnail">
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
+<div *ngFor="let page of pages">
+<app-guide-page  *ngIf="(guide | async).currentPage===page.speciesCode" [page]="page"></app-guide-page>
+</div>
+<br>
+<p style="text-align: center;font-size: 12px;">Illustrations courtesy of <img src="../../assets/images/avatars/torontozoo.svg" style="width: 12%; height: 6%;"></p>

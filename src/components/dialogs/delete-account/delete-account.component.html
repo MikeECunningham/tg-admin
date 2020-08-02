@@ -1,0 +1,24 @@
+<div id="master">
+  <mat-toolbar color="primary" class="main header">
+    {{'Delete Account' | translate}}
+    <span class="spacer"></span>
+    <button mat-button mat-dialog-close>
+      <mat-icon class="md-48">close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <p>
+    {{'Are you sure you want to delete your account? This action CANNOT be undone.' | translate}}
+  </p>
+  <p>
+    {{'Type \'DELETE\' into the box below' | translate}}
+  </p>
+  <mat-form-field class="input">
+    <mat-icon matPrefix>delete_forever</mat-icon>
+    <input [(ngModel)]="deleteConfirmation" matInput placeholder="{{'DELETE' | translate}}">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button (click)="deleteAccount()" color="primary"
+    [disabled]="deleteConfirmation.toLowerCase() != 'delete'" id="requestButton">
+    {{'Delete Account' | translate}}
+  </button>
+</div>

@@ -1,0 +1,33 @@
+<mat-toolbar id='infoToolbar' color='primary'>
+  <button id="menuButton" (click)="goBack();" mat-button>
+    <mat-icon class="md-48">chevron_left</mat-icon>
+  </button>
+  <p>{{'Turtle Information' | translate}}</p>
+</mat-toolbar>
+<div id="paddingDiv">
+  <div id="infoDiv">
+    <div style="text-align: center;width: 100%">
+      <b id="speciesName">{{page.speciesName | translate}}</b>
+    </div>
+    <i style="font-size:20px;color:rgb(102, 102, 102)">{{page.latinName}}</i>
+    <hr>
+    <span class="sar">
+      <mat-icon style="left: 0;position: absolute;">{{page.riskLevel=='INV'?'warning':'error'}}</mat-icon> {{resolveRisk(page.riskLevel)}}
+    </span>
+    <hr>
+    <app-image-carousel (currentImageSelected)="setCurrentImage($event)" [images]="page.imageURLs"></app-image-carousel>
+    <p style="font-size: 12px;">Photo courtesy of: {{page.imageCredits[currentImage]}}</p>
+    <br>
+    <ul>
+      <li *ngFor="let description of page.descriptions">
+        {{description | translate}}
+      </li>
+    </ul>
+    <hr>
+    <a routerLink="/newObservation/{{page.speciesCode}}" style="color:#09F;font-size: 20px;text-align:center;">
+      <div>
+        <mat-icon>description</mat-icon> {{ 'Report a Sighting' | translate}}
+      </div>
+    </a>
+  </div>
+</div>

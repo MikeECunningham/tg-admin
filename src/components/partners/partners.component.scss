@@ -1,0 +1,25 @@
+#infoToolbar{
+    position: fixed;
+    z-index: 2;
+
+}
+.paddingDiv{
+    padding-top:65px;
+    padding-left:2.5%;
+    padding-right:2.55%;
+}
+mat-card {
+	margin-bottom: 5px;
+}
+img{
+	object-fit: cover;
+	width:100%;
+  	height: 80%;
+}
+#menuButton {
+    display: block;
+    padding:0;
+}
+mat-toolbar{
+    padding:0;
+}
